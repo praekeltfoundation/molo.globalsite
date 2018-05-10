@@ -19,7 +19,6 @@ class CountrySiteModelAdmin(ModelAdmin):
     list_display = ['name', 'site_url']
 
 
-
 class GlobalSiteAdminGroup(ModelAdminGroup):
     menu_label = 'Global Site'
     menu_icon = 'folder-open-inverse'

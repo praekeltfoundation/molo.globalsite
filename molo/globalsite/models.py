@@ -98,4 +98,3 @@ class CountrySite(models.Model):
             heading="country details",
         )
     ]
-
