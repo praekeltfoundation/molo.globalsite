@@ -73,3 +73,11 @@ class TestGlobalSiteViews(TestCase, MoloTestCaseMixin):
                 'http://main-1.localhost:8000/globalsite/countries/')
             response = client.get(url, follow=True)
             self.assertContains(response, 'South Africa')
+
+    def test_settings_globalsite_ignore_path(self):
+        excl = ['/search/']
+        response = self.client.get(excl[0])
+        self.assertEquals(response.status_code, 302)
+        with self.settings(GLOBAL_SITE_IGNORE_PATH=excl):
+            response = self.client.get(excl[0])
+            self.assertEquals(response.status_code, 200)

@@ -80,9 +80,6 @@ class CountrySite(models.Model):
         related_name='+'
     )
 
-    def __str__(self):
-        return self.name
-
     class Meta:
         verbose_name = 'Country site'
 

@@ -17,7 +17,12 @@ class CountrySiteRedirectMiddleware(object):
             '/admin/',
             'django-admin/',
             '/import/',
-            '/locale/'
+            '/locale/',
+            '/favicon.ico',
+            '/robots.txt',
+            '/metrics',
+            '/api/',
+            '/serviceworker.js'
         ]
         if hasattr(settings, 'GLOBAL_SITE_IGNORE_PATH'):
             exclude += settings.GLOBAL_SITE_IGNORE_PATH
