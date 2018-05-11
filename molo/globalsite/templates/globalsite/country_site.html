@@ -16,11 +16,10 @@
     {% for country in region.country_sites.all %}
       <li class="">
         <a href="{% url 'molo.globalsite:set_country' country.code %}" class="">
-          <div class="">{% if country.flag %}
+            {% if country.flag %}
             {% image country.flag width-30 as tmp_photo %}
               <img src="{{ tmp_photo.url }}" alt="{{ country.flag.title }}" class="" />
             {% endif %}
-          </div>
           {{ country.name }}
         </a>
       </li>
