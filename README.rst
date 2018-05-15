@@ -9,7 +9,7 @@ Molo Global Site
     :target: https://coveralls.io/github/praekeltfoundation/molo.globalsite?branch=develop
     :alt: Code Coverage
 
-Provides code to help with identifying visitors’ locations and redirecting them to the relevant country site or the global site using the Molo code base.
+Provides code to help with identifying visitors’ country and redirecting them to the relevant country site or the global site using the Molo code base.
 
 Getting Started
 ==================

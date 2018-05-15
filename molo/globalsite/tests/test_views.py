@@ -20,7 +20,7 @@ class TestGlobalSiteViews(TestCase, MoloTestCaseMixin):
         asia = Region.objects.create(name='Asia')
 
         CountrySite.objects.create(
-            name='South Africa', code='ZA',
+            name='South Africa', code='za',
             site_url='http://za.site.org', region=africa)
         CountrySite.objects.create(
             name='Iran', code='IR',

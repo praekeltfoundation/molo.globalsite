@@ -76,7 +76,7 @@ class CountrySite(models.Model):
     name = models.CharField(max_length=128, verbose_name="Country Name")
     code = models.CharField(
         max_length=6, verbose_name="Country Code",
-        help_text='Country code is required in upper case eg. ZA')
+        help_text='eg. ZA')
     site_url = models.CharField(
         max_length=128,
         help_text='Link to the country site. eg. http://www.zm.sitename.org/')
@@ -94,6 +94,10 @@ class CountrySite(models.Model):
 
     class Meta:
         verbose_name = 'Country site'
+
+    def save(self, *args, **kwargs):
+        self.code = self.code.upper()
+        return super(CountrySite, self).save(*args, **kwargs)
 
     panels = [
         MultiFieldPanel(
