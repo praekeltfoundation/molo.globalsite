@@ -19,6 +19,13 @@ class GlobalSiteSettings(BaseSetting):
         help_text='When this is activated it will automatically'
                   ' redirect the users to the country of their choice.'
     )
+    geolocation = models.BooleanField(
+        default=False,
+        editable=True,
+        verbose_name=("Activate Geolocation"),
+        help_text='When Geolocation is activated it will automatically'
+                  ' redirect the users to the country site of their location.'
+    )
     description = models.TextField(
         null=True, blank=True,
         help_text='This description will be displayed'
@@ -28,6 +35,7 @@ class GlobalSiteSettings(BaseSetting):
             [
                 FieldPanel('is_globalsite'),
                 FieldPanel('autoredirect'),
+                FieldPanel('geolocation'),
                 FieldPanel('description'),
             ],
             heading="Global Site Settings",
@@ -63,11 +71,13 @@ class Region(models.Model):
 
 
 class CountrySite(models.Model):
-    name = models.CharField(max_length=128, verbose_name=("Country Name"))
-    code = models.CharField(max_length=6, verbose_name=("Country Code"))
+    name = models.CharField(max_length=128, verbose_name="Country Name")
+    code = models.CharField(
+        max_length=6, verbose_name="Country Code",
+        help_text='Country code is required in upper case eg. ZA')
     site_url = models.CharField(
         max_length=128,
-        help_text='Link to the country site. eg http://www.zm.sitename.org/')
+        help_text='Link to the country site. eg. http://www.zm.sitename.org/')
     region = models.ForeignKey(
         'globalsite.Region', related_name='country_sites',
         verbose_name='Country Region', blank=True, null=True,

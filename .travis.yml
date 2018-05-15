@@ -15,6 +15,7 @@ script:
   - flake8 molo
   - molo scaffold testapp --include molo.globalsite ^globalsite/
   - cp test_settings.py testapp/testapp/settings/local.py
+  - cp -r molo/globalsite/geoip_db/ testapp/testapp/geoip_db
   - flake8 testapp
   - pip install -e testapp
   - py.test --cov=molo
