@@ -9,22 +9,24 @@ class GlobalSiteSettings(BaseSetting):
     is_globalsite = models.BooleanField(
         default=False,
         editable=True,
-        verbose_name=("Activate Golobal Site"),
-        help_text='It will set this site as the global site'
+        verbose_name=("Activate Global Site"),
+        help_text='When activated it will set the'
+        ' current site as the global site.'
     )
     autoredirect = models.BooleanField(
         default=False,
         editable=True,
         verbose_name=("Activate Auto Redirect"),
-        help_text='When this is activated it will automatically'
-                  ' redirect the users to the country of their choice.'
+        help_text='When activated it will automatically redirect the'
+        ' users to the country of their choice when accessing the global site.'
     )
     geolocation = models.BooleanField(
         default=False,
         editable=True,
         verbose_name=("Activate Geolocation"),
-        help_text='When Geolocation is activated it will automatically'
-                  ' redirect the users to the country site of their location.'
+        help_text='When activated it will detect users country and'
+        ' redirect them to the supported country site. If the detected country'
+        ' is not available it will display the available country sites.'
     )
     description = models.TextField(
         null=True, blank=True,

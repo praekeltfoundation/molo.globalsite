@@ -69,7 +69,7 @@ Activate Auto Redirect:
 When activated it will automatically redirect the users to the country of their choice when accessing the global site.
 
 Activate Geolocation:
-When activated it will detect user's country and redirect them to the supported country. If the detected country is not available it will display the available country sites.
+When activated it will detect user's country and redirect them to the supported country site. If the detected country is not available it will display the available country sites.
 
 Description:
 Description will be displayed on the homepage of the global site.
