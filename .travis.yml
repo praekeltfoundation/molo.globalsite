@@ -1,0 +1,40 @@
+sudo: false
+language: python
+python:
+  - '2.7'
+
+env:
+  - TEST=molo_lint
+  - TEST=testapp_lint
+  - TEST=build
+
+cache: pip
+
+before_install:
+  - pip install --upgrade pip
+install:
+  - pip install -r requirements-dev.txt
+  - pip install -e .
+  - pip install coveralls
+script: ./travis.sh
+after_success:
+  - coveralls
+
+jobs:
+  include:
+    - stage: release
+      if: tag IS present
+      env: []
+      before_install: []
+      install: []
+      script: skip
+      after_success: []
+      deploy:
+        provider: pypi
+        distributions: sdist bdist_wheel
+        user: praekelt.org
+        password:
+          secure: fSqSTHiJWIODYhy1WmUU8od/iq53jsYlwbUT5IKCS1ET8Q62oB/igPkdn0DuYs2kspSvgnKthTsSyi0uAKHeN81aPmVpMnpT2a39dhALr/7t3Jy2XEmEySxe6j9YOK8T9NQ/CXMOYbmQ6F0QYy7wPtByajYEZuHzQqt1t52IMfyBb0uv300d+N7dU4xs8Lbqt7Qllj/OIcLOeq93bpTKSkVPdjkacjYrQChHEU2cLubKPDSsGdTjIZvOivZqOscvpMViYsn6zSEwL5V8dpm6tTb1UBRZIOkqmlWRALVW1QPuapls/gJb+umQBg2tR9TjTHqCp81cvS6jDbi3TmOZMKAsLld8dG/Orh7C+DScdlJ32JEfEk76Fo/i5Ik/TPrMAswGP5SLWDaE9AExVID38g5DINIwDh6GMg0fC+1tEz/ACTUtME94qNxNvb3VtrJ7FDFkaMiswm38nzDPdXfpn09qC8rQS/B1+pb5r7GN8hVrNxAsnhK0NQfugl+eu84mBC0n+/3gzCsYR/k56LGJg4x/aOld48fDvb0qL/NxKLjK8OZXEYfatGyn8CKgAx8qURypOakC6fP1gciGqmRaRUdvXjiHrdN+7ghScuUusb4aS9sJmz3mMFaGwdVTQycPdOlsTrYeHUtvb2x8M09zh1oLRiGR/nIX9HwTtORDfBw=
+        on:
+          tags: true
+          all_branches: true

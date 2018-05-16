@@ -1,0 +1,3 @@
+[run]
+omit = molo/globalsite/migrations/*
+source= molo/globalsite/
