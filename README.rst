@@ -56,7 +56,7 @@ Add the HTML block in your country site base template to enable users to change 
 How users are redirected?
 =========================
 
-The middleware redirects the user by checking the session and if the country site is set in session it will redirect the user to the country site. If the country site is not in session and the geolocation is activated, it will uses user's IP address to detect their country and redirect the user to the supported country site. However if the detected country is not supported or the geolocation is not activated it will display the list of supported country sites.
+The middleware redirects the user by checking the session and if the country site is set in session it will redirect the user to the country site. If the country site is not in session and the geolocation is activated, it will use user's IP address to detect their country and redirect the user to the supported country site. However if the detected country is not supported or the geolocation is not activated it will display the list of supported country sites.
 
 GlobalSite Settings
 ===================
