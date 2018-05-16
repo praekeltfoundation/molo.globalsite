@@ -20,7 +20,7 @@ class TestGlobalSiteViews(TestCase, MoloTestCaseMixin):
         asia = Region.objects.create(name='Asia')
 
         CountrySite.objects.create(
-            name='South Africa', code='ZA',
+            name='South Africa', code='za',
             site_url='http://za.site.org', region=africa)
         CountrySite.objects.create(
             name='Iran', code='IR',
@@ -31,6 +31,14 @@ class TestGlobalSiteViews(TestCase, MoloTestCaseMixin):
         self.setting.is_globalsite = True
         self.setting.description = 'Welcome To Global Site'
         self.setting.save()
+
+    def test_country_sites(self):
+        country = CountrySite.objects.all()
+        self.assertEquals(country.count(), 2)
+        self.assertEquals(country[0].code, 'ZA')
+        self.assertEquals(country[0].name, 'South Africa')
+        self.assertEquals(country[1].code, 'IR')
+        self.assertEquals(country[1].name, 'Iran')
 
     def test_global_site_is_activated(self):
         response = self.client.get('/')

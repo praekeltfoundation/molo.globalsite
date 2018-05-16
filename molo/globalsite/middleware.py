@@ -15,6 +15,7 @@ class CountrySiteRedirectMiddleware(object):
             reverse('health'),
             reverse('versions'),
             '/globalsite/',
+            '/footer-pages/',
             '/admin/',
             'django-admin/',
             '/import/',
