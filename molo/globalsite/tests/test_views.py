@@ -32,6 +32,15 @@ class TestGlobalSiteViews(TestCase, MoloTestCaseMixin):
         self.setting.description = 'Welcome To Global Site'
         self.setting.save()
 
+    def test_country_sites(self):
+        country = CountrySite.objects.all()
+        self.assertEquals(country.count(), 2)
+        self.assertEquals(country[0].code, 'ZA')
+        self.assertEquals(country[0].name, 'South Africa')
+        self.assertEquals(country[1].code, 'IR')
+        self.assertEquals(country[1].name, 'Iran')
+
+
     def test_global_site_is_activated(self):
         response = self.client.get('/')
         self.assertRedirects(
