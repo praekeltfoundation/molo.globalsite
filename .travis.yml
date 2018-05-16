@@ -8,24 +8,6 @@ env:
   - TEST=testapp_lint
   - TEST=build
 
-jobs:
-  include:
-    - stage: deploy
-      env: []
-      before_install: []
-      install: []
-      script: 'true'
-      after_success: []
-      deploy:
-        provider: pypi
-        distributions: sdist bdist_wheel
-        user: Praekelt.org
-        password:
-          secure: isdKUhi7DBt+gpP4Ks+PJA4tbKAiMVlLZcwSESIjnu2bNXNbRNASqzU1BvuC//FsO86vZOSC1nPchQvEO+I6FjmGvXjnYbdEt7GtJGcmS4n/Hp/6lsouvdmabJA1ASdZqOL+yEdWQmBN0jEoyzoGMxFK9tu22+oH+2w4HX5bdPa9wt1/6jsuJ8qlXKRXr/+r3o8zOSBjmpe0G4mjjDUXTxVbIT7UDoRv6xbLhUcdzcW1jLraatpLpggGSpogR2Cdv0cBxTRQpBE688IRSQd1zoDlJQKalPh7b8qlwIsHhuj9vgT8ofy25LAhbG7Gb/gSnOQQOQF0TZSWCszq1W54yAfwkBAp+BJdngx5W8kp8m4LPSL7eFtcaIdGA3sxrIGewO1cEYwDyb6wYq2gZ+TnevJ0NC/Sf9U5Hh0nnrubsJvLX07drMRQt6PwsUCF42YmZYyQ8sUIjJYT0+ES9WdbrdEoZvLdd3CS0x9rEGrchBwO2jBa07AGSxmA7zFhKO11Hb9Q0/6iABeeZ0sdMwQnwVMWI4vboxMv7uWZ4CCkE1q26dOP1J9jyNRkD4c0zeyphYn5INwZhCGIjbZAgnyI9H05zI9XMd/jlfkyjMgk/+UEvTx+0fgHxyuQ9Em5rJuuhERBd3fzOuQF21OV9/06ASyGghlbln4mqnAgQkppTnU=
-        on:
-          tags: true
-          all_branches: true
-
 cache: pip
 
 before_install:
@@ -37,3 +19,22 @@ install:
 script: ./travis.sh
 after_success:
   - coveralls
+
+jobs:
+  include:
+    - stage: release
+      if: tag IS present
+      env: []
+      before_install: []
+      install: []
+      script: skip
+      after_success: []
+      deploy:
+        provider: pypi
+        distributions: sdist bdist_wheel
+        user: praekelt.org
+        password:
+          secure: isdKUhi7DBt+gpP4Ks+PJA4tbKAiMVlLZcwSESIjnu2bNXNbRNASqzU1BvuC//FsO86vZOSC1nPchQvEO+I6FjmGvXjnYbdEt7GtJGcmS4n/Hp/6lsouvdmabJA1ASdZqOL+yEdWQmBN0jEoyzoGMxFK9tu22+oH+2w4HX5bdPa9wt1/6jsuJ8qlXKRXr/+r3o8zOSBjmpe0G4mjjDUXTxVbIT7UDoRv6xbLhUcdzcW1jLraatpLpggGSpogR2Cdv0cBxTRQpBE688IRSQd1zoDlJQKalPh7b8qlwIsHhuj9vgT8ofy25LAhbG7Gb/gSnOQQOQF0TZSWCszq1W54yAfwkBAp+BJdngx5W8kp8m4LPSL7eFtcaIdGA3sxrIGewO1cEYwDyb6wYq2gZ+TnevJ0NC/Sf9U5Hh0nnrubsJvLX07drMRQt6PwsUCF42YmZYyQ8sUIjJYT0+ES9WdbrdEoZvLdd3CS0x9rEGrchBwO2jBa07AGSxmA7zFhKO11Hb9Q0/6iABeeZ0sdMwQnwVMWI4vboxMv7uWZ4CCkE1q26dOP1J9jyNRkD4c0zeyphYn5INwZhCGIjbZAgnyI9H05zI9XMd/jlfkyjMgk/+UEvTx+0fgHxyuQ9Em5rJuuhERBd3fzOuQF21OV9/06ASyGghlbln4mqnAgQkppTnU=
+        on:
+          tags: true
+          all_branches: true
