@@ -48,8 +48,10 @@ Add Global site URL in your app urls.py::
 Add the HTML block in your country site base template to enable users to change their country site::
 
     {% block country %}
-        {% trans "Country" %}: {{request.site}}
-        <a href="{% url 'molo.globalsite:change_country' %}">{% trans "Change your country" %}</a>
+        {% if settings.globalsite.GlobalSiteSettings.show_country %}
+            {% trans "Country" %}: {{request.site}}
+            <a href="{% url 'molo.globalsite:change_country' %}">{% trans "Change your country" %}</a>
+        {% endif %}
     {% endblock %}
 
 
@@ -73,6 +75,9 @@ When activated it will detect user's country and redirect them to the supported 
 
 Description:
 Description will be displayed on the homepage of the global site.
+
+show_country:
+When activated, the country name will be displayed and users will be able to change their country site.
 
 Country site and Region
 =======================

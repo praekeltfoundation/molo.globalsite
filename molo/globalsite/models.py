@@ -31,7 +31,15 @@ class GlobalSiteSettings(BaseSetting):
     description = models.TextField(
         null=True, blank=True,
         help_text='This description will be displayed'
-                  ' on the homepage of the global site')
+                  ' on the homepage of the global site'
+    )
+    show_country = models.BooleanField(
+        default=False,
+        editable=True,
+        verbose_name=("Display Country"),
+        help_text='When activated, the country name will be displayed'
+                  ' and users will be able to change their country site.'
+    )
     panels = [
         MultiFieldPanel(
             [
@@ -41,6 +49,12 @@ class GlobalSiteSettings(BaseSetting):
                 FieldPanel('description'),
             ],
             heading="Global Site Settings",
+        ),
+        MultiFieldPanel(
+            [
+                FieldPanel('show_country'),
+            ],
+            heading="Country Site Settings",
         )
     ]
 
