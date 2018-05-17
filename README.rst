@@ -45,7 +45,7 @@ Add Global site URL in your app urls.py::
         url(r'^globalsite/', include('molo.globalsite.urls', namespace='molo.globalsite', app_name='molo.globalsite')),
    )
 
-Add the HTML block in your country site base template to enable users to change their country site::
+Add the HTML block in your country site base template to allow users to change their country site::
 
     {% block country %}
         {% if settings.globalsite.GlobalSiteSettings.show_country %}
