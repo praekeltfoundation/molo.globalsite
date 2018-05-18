@@ -15,7 +15,7 @@ class CountrySiteRedirectMiddleware(object):
             reverse('health'),
             reverse('versions'),
             '/globalsite/',
-            '/footer-pages/',
+            '/footer',
             '/admin/',
             'django-admin/',
             '/import/',
@@ -24,7 +24,7 @@ class CountrySiteRedirectMiddleware(object):
             '/robots.txt',
             '/metrics',
             '/api/',
-            '/serviceworker.js'
+            '/serviceworker.js',
         ]
         if hasattr(settings, 'GLOBAL_SITE_IGNORE_PATH'):
             exclude += settings.GLOBAL_SITE_IGNORE_PATH
