@@ -31,6 +31,12 @@ class CountrySiteRedirectMiddleware(object):
         if any([p for p in exclude if request.path.startswith(p)]):
             return None
 
+        if 'GLOBALSITE_COUNTRY_SELECTION' in request.session and \
+                globalsite_settings.autoredirect:
+            return redirect(
+                request.session.get('GLOBALSITE_COUNTRY_SELECTION')
+            )
+
         if 'GLOBALSITE_COUNTRY_SELECTION' not in request.session and \
                 globalsite_settings.is_globalsite:
             country_site = geo.get_country_site(request)
@@ -41,9 +47,3 @@ class CountrySiteRedirectMiddleware(object):
                 )
             else:
                 return redirect(reverse('molo.globalsite:country_selection'))
-
-        if 'GLOBALSITE_COUNTRY_SELECTION' in request.session and \
-                globalsite_settings.autoredirect:
-            return redirect(
-                request.session.get('GLOBALSITE_COUNTRY_SELECTION')
-            )
