@@ -15,6 +15,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='globalsitesettings',
             name='show_country',
-            field=models.BooleanField(default=False, help_text=b'When activated, on the country site it will the display the country name and it will allow the users to change their country site.', verbose_name=b'Display Country'),
+            field=models.BooleanField(default=False, help_text=b'When activated, the country name will be displayed and users will be able to change their country site.', verbose_name=b'Display Country'),
         ),
     ]
