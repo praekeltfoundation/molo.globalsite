@@ -1,6 +1,10 @@
 CHANGE LOG
 ==========
 
+6.0.0
+-----
+- Molo Version 6 compatibility
+
 5.1.1
 -----
 - When redirect is activated first check if user has chosen their country
