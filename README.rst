@@ -14,7 +14,7 @@ Provides code to help with identifying visitors’ country and redirecting them 
 Getting Started
 ==================
 
-Installation molo.globalsite package::
+Install molo.globalsite package::
 
    pip install molo.globalsite
 

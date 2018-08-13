@@ -1,9 +1,8 @@
-from django.conf.urls import patterns, url
+from django.conf.urls import url
 from molo.globalsite import views
 
 
-urlpatterns = patterns(
-    '',
+urlpatterns = [
     url(r'^countries/$', views.CountryView.as_view(),
         name='country_selection'),
 
@@ -11,4 +10,4 @@ urlpatterns = patterns(
         views.set_country, name='set_country'),
 
     url(r'^changecountry/$', views.change_country, name='change_country'),
-)
+]
