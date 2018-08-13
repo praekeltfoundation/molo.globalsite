@@ -26,4 +26,4 @@ def change_country(request):
     if hasattr(settings, 'GLOBAL_SITE_URL'):
         global_site = settings.GLOBAL_SITE_URL
         url = urlparse(urljoin(global_site, '/globalsite/countries/'))
-        return redirect(url)
+        return redirect(url.geturl())
