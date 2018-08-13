@@ -2,7 +2,7 @@ from django.shortcuts import redirect
 from django.conf import settings
 from django.core.urlresolvers import reverse
 from molo.globalsite import geo
-from models import GlobalSiteSettings
+from molo.globalsite.models import GlobalSiteSettings
 
 
 class CountrySiteRedirectMiddleware(object):

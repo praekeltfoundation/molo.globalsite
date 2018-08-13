@@ -1,6 +1,7 @@
 from wagtail.contrib.modeladmin.options import (
     ModelAdmin, modeladmin_register, ModelAdminGroup)
-from models import CountrySite, Region
+
+from molo.globalsite.models import CountrySite, Region
 
 
 class RegionModelAdmin(ModelAdmin):
