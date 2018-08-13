@@ -1,4 +1,4 @@
-import urlparse
+from django.utils.six.moves.urllib.parse import urlparse, urljoin
 from django.conf import settings
 from django.shortcuts import redirect
 from django.views.generic import TemplateView
@@ -25,5 +25,5 @@ def set_country(request, country_code):
 def change_country(request):
     if hasattr(settings, 'GLOBAL_SITE_URL'):
         global_site = settings.GLOBAL_SITE_URL
-        url = urlparse.urljoin(global_site, '/globalsite/countries/')
+        url = urlparse(urljoin(global_site, '/globalsite/countries/'))
         return redirect(url)
