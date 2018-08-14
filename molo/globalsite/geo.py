@@ -1,4 +1,4 @@
-from django.contrib.gis.geoip2 import GeoIP2
+from django.contrib.gis import geoip2
 from molo.globalsite.models import CountrySite
 
 
@@ -20,6 +20,6 @@ def get_client_ip(request):
 
 def get_country_code(request):
     try:
-        return GeoIP2().country_code(get_client_ip(request))
+        return geoip2.GeoIP2().country_code(get_client_ip(request))
     except:
         return None
