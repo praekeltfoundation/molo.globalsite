@@ -1,7 +1,7 @@
 from django.shortcuts import redirect
 from django.conf import settings
 from django.core.urlresolvers import reverse
-from molo.globalsite import geo
+from molo.globalsite.geo import get_country_site
 from molo.globalsite.models import GlobalSiteSettings
 
 
@@ -39,7 +39,7 @@ class CountrySiteRedirectMiddleware(object):
 
         if 'GLOBALSITE_COUNTRY_SELECTION' not in request.session and \
                 globalsite_settings.is_globalsite:
-            country_site = geo.get_country_site(request)
+            country_site = get_country_site(request)
             if country_site and globalsite_settings.geolocation:
                 request.session['GLOBALSITE_COUNTRY_SELECTION'] = country_site
                 return redirect(
