@@ -1,6 +1,10 @@
 CHANGE LOG
 ==========
 
+6.0.1
+-----
+- Fix potential cyclic import
+
 6.0.0
 -----
 - Molo Version 6 compatibility
