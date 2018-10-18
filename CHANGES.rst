@@ -1,6 +1,10 @@
 CHANGE LOG
 ==========
 
+7.0.0
+-----
+- Support Molo version 7
+
 6.0.1
 -----
 - Fix potential cyclic import
